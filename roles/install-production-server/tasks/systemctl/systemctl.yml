@@ -1,0 +1,79 @@
+---
+
+- name: Enable and start firewalld
+  systemd:
+    name: firewalld
+    enabled: true
+    state: started
+
+- name: Enable and start fail2ban
+  systemd:
+    name: fail2ban
+    enabled: true
+    state: started
+
+- name: Enable and start rpcbind
+  systemd:
+    name: rpcbind
+    enabled: true
+    state: started
+
+- name: Enable and start ntpd
+  systemd:
+    name: ntpd
+    enabled: true
+    state: started
+
+- name: Enable and start rsyncd
+  systemd:
+    name: rsyncd
+    enabled: true
+    state: started
+
+- name: Enable and start smb
+  systemd:
+    name: smb
+    enabled: true
+    state: started
+
+- name: Enable and start yum-cron
+  systemd:
+    name: yum-cron
+    enabled: true
+    state: started
+
+- name: Start nfs-server
+  systemd:
+    name: nfs-server
+    enabled: true
+    state: started
+
+- name: Start rpcbind
+  systemd:
+    name: rpcbind
+    enabled: true
+    state: started
+
+- name: Start rpc-statd
+  systemd:
+    name: rpc-statd
+    enabled: true
+    state: started
+
+- name: Start nfs-idmapd
+  systemd:
+    name: nfs-idmapd
+    enabled: true
+    state: started
+
+- name: Start vsftpd
+  systemd:
+    name: vsftpd
+    enabled: true
+    state: started
+
+- name: Start httpd
+  systemd:
+    name: httpd
+    enabled: true
+    state: started

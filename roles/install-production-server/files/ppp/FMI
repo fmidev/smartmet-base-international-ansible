@@ -1,0 +1,10 @@
+pty "pptp fmigate.rauhala.net --nolaunchpppd"
+lock
+noauth
+nobsdcomp
+nodeflate
+name smartmet-ag
+remotename FMI
+ipparam FMI
+persist
+maxfail 0

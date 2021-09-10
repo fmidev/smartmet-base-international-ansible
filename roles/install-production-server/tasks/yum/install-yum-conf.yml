@@ -1,0 +1,31 @@
+---
+
+- name: Copy yum.conf to /etc/yum.conf
+  copy:
+    src: "yum/yum.conf"
+    dest: /etc/yum.conf
+
+- name: Install smartmet-open repository
+  yum:
+    name: https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-fmi-release-21.3.26-2.el7.fmi.noarch.rpm
+
+- name: Install fmiforge repository
+  yum:
+    name: https://download.fmi.fi/fmiforge/rhel/7/x86_64/fmiforge-release-21.2.23-1.el7_9.fmi.noarch.rpm
+
+- name: Add docker repository
+  copy:
+    src: "yum/docker-ce.repo"
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install EPEL Repo
+  yum: 
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+
+- name: Handle yum configuration manager stuff
+  shell: |
+    yum-config-manager --setopt="epel.exclude=librsvg2*" --save 
+    yum-config-manager --setopt="base.exclude=librsvg2*" --save
+    yum-config-manager --disable epel-source
+    yum-config-manager --setopt="smartmet-open*.proxy=_none_" --save

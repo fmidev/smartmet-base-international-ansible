@@ -1,0 +1,74 @@
+---
+
+- name: Create required /etc directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  with_items:
+    - /etc/cron.d
+    - /etc/profile.d
+    - /etc/yum.repos.d
+    - /etc/httpd/conf.d
+    - /etc/php.d
+    - /etc/ppp/peers
+    - /etc/samba
+    - /etc/fail2ban/action.d
+
+- name: Create /smartmet directory if it does not exist
+  file:
+    path: /smartmet
+    state: directory
+    owner: smartmet
+    group: smartmet
+    mode: '0755'
+
+- name: Create required subdirectories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: smartmet
+    group: smartmet
+    mode: '0755'
+  with_items:
+    - /smartmet/www
+    - /smartmet/data
+    - /smartmet/run
+    - /smartmet/bin
+    - /smartmet/products
+    - /smartmet/editor
+    - /smartmet/logs
+    - /smartmet/share
+    - /smartmet/tmp
+    - /smartmet/cnf/cron/cron.d
+    - /smartmet/cnf/cron/cron.10min
+    - /smartmet/cnf/cron/cron.hourly
+    - /smartmet/cnf/cron/cron.daily 
+    - /smartmet/cnf/cron/cron.weekly
+    - /smartmet/cnf/cron/cron.monthly
+    - /smartmet/cnf/triggers.d/quick
+    - /smartmet/cnf/triggers.d/lazy
+    - /smartmet/editor/in
+    - /smartmet/editor/out
+    - /smartmet/editor/satellite
+    - /smartmet/editor/smartalert
+    - /smartmet/logs/data
+    - /smartmet/logs/triggers/output
+    - /smartmet/data/gts/metar/world/querydata
+    - /smartmet/data/gts/synop/world/querydata
+    - /smartmet/data/gts/ship/world/querydata
+    - /smartmet/data/gts/buoy/world/querydata
+    - /smartmet/data/gts/sounding/world/querydata
+    - /smartmet/data/incoming
+    - /smartmet/run/data
+    - /smartmet/run/products
+    - /smartmet/tmp/data
+    - /smartmet/tmp/www
+    - /smartmet/share/maps
+    - /smartmet/share/fonts,coordinates
+    - /smartmet/share/coordinates
+    - /smartmet/share/gis/shapes
+    - /smartmet/cnf/misc
+    - /smartmet/cnf/httpd/conf.d
+
+

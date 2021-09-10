@@ -1,0 +1,42 @@
+---
+
+# Redo these. Is there a builtin method for firewall-cmd?
+- name: "firewall-cmd add services: mountd, rpc-bind, nfs"
+  shell: | 
+    firewall-cmd --permanent --add-service=mountd
+    firewall-cmd --permanent --add-service=rpc-bind
+    firewall-cmd --permanent --add-service=nfs
+
+# what is this?
+- name: Enable httpd
+  shell: |
+    semanage fcontext --add --type httpd_sys_content_t "/smartmet/www(/.*)?"
+    semanage fcontext --add --type httpd_sys_content_t "/smartmet/editor/smartalert(/.*)?"
+    semanage fcontext --add --type httpd_sys_content_t "/smartmet/cnf/httpd.conf"
+    semanage fcontext --add --type httpd_sys_content_t "/smartmet/cnf/httpd/conf.d"
+    restorecon -Rv /smartmet/www /smartmet/editor/smartalert /smartmet/cnf/httpd.conf /smartmet/cnf/httpd/conf.d
+    setsebool -P httpd_can_network_relay on
+
+- name: "firewall-cmd add services: https, https"
+  shell: | 
+    firewall-cmd --permanent --add-service=http
+    firewall-cmd --permanent --add-service=https
+
+- name: "firewall-cmd add services: samba"
+  shell: | 
+    firewall-cmd --permanent --zone=public --add-service=samba
+    setsebool -P samba_export_all_rw=1
+
+- name: "firewall-cmd add services: ftp"
+  shell: | 
+    firewall-cmd --permanent --zone=public --add-service=ftp
+
+# Enable access from FMI
+- name: "firewall-cmd: enable access from FMI"
+  shell: | 
+    firewall-cmd --permanent --zone=public --add-source=193.166.207.129
+    firewall-cmd --permanent --zone=public --add-source=193.166.223.108
+
+- name: "firewall-cmd reload"
+  shell: | 
+    firewall-cmd --reload

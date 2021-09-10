@@ -1,0 +1,25 @@
+---
+
+- name: Clone smartmet-base-international
+  git:
+    repo: https://github.com/fmidev/smartmet-base-international.git
+    dest: /tmp/smartmet-base-international.git
+    clone: yes
+
+- name: Install cleaner
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/cleaner /smartmet/bin/"
+
+- name: Install mkcron
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/mkcron /smartmet/bin/"
+
+- name: Install run-triggers-quick
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/run-triggers-quick /smartmet/bin/"
+
+- name: Install run-triggers-lazy
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/run-triggers-lazy /smartmet/bin/"
+
+- name: Install trigger
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/trigger /smartmet/bin/"
+
+- name: Install utcrun
+  command: "install -m 755 /tmp/smartmet-base-international.git/unixtools/utcrun /smartmet/bin/"
