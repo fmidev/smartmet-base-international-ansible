@@ -1,0 +1,14 @@
+PATH=/bin:/usr/bin:/usr/local/bin:/smartmet/bin
+# SmartMet run-parts
+*/10 * * * * smartmet run-parts %{smartmetroot}/cnf/cron/cron.10min
+01 * * * * smartmet run-parts %{smartmetroot}/cnf/cron/cron.hourly
+00 0 * * * smartmet run-parts %{smartmetroot}/cnf/cron/cron.daily
+02 2 * * 0 smartmet run-parts %{smartmetroot}/cnf/cron/cron.weekly
+02 3 1 * * smartmet run-parts %{smartmetroot}/cnf/cron/cron.monthly
+
+# Triggers
+* * * * * smartmet run-triggers-quick > /dev/null 2>&1
+* * * * * smartmet run-triggers-lazy > /dev/null 2>&1
+
+# Cron
+* * * * * root mkcron > /dev/null 2>&1

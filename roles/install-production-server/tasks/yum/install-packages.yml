@@ -1,0 +1,68 @@
+---
+
+- name: Install required SmartMet packages
+  yum:
+    name:
+      - smartmet-qdtools
+      - smartmet-qdcontour
+      - smartmet-shapetools
+      - smartmet-share-php
+    state: present
+
+- name: Install docker
+  yum:
+    name:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
+    state: present
+
+- name: Install other required packages
+  yum:
+    name:
+      - bc
+      - bind-utils
+      - bzip2
+      - cronie
+      - emacs-nox
+      - fail2ban-firewalld
+      - fail2ban-systemd
+      - ftp
+      - git
+      - htop
+      - httpd
+      # - ImageMagick
+      - nfs-utils
+      - lbzip2
+      - libnfsidmap
+      - nano
+      - ntp
+      - openvpn
+      - parallel
+      - perl
+      - php
+      - php-gd
+      - policycoreutils-python
+      - procmail
+      - rsync
+      - samba
+      - samba-client
+      - time
+      - telnet
+      - traceroute
+      - vsftpd
+      - wget
+      - wgrib2
+      - xinetd
+      - zip
+      - unzip
+      - man
+      - mlocate
+      - whois
+      - yum-cron
+      - net-tools
+      - cifs-utils
+      - certbot 
+      - python2-certbot-apache
+      - nodejs
+    state: present

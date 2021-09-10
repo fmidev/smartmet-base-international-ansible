@@ -1,0 +1,25 @@
+---
+
+- name: Determine available groups
+  getent:
+    database: group
+
+- name: Add smartmet group
+  group:
+    name: smartmet
+    state: present
+    gid: 1000
+  when:
+    - "'smartmet' not in ansible_facts.getent_group"
+    - "'1000' not in item.value"
+  loop: "{{ ansible_facts.getent_group | dict2items }}"
+  
+- name: Add gts group
+  group:
+    name: gts
+    state: present
+    gid: 1001
+  when:
+    - "'gts' not in ansible_facts.getent_group"
+    - "'1001' not in item.value"
+  loop: "{{ ansible_facts.getent_group | dict2items }}"

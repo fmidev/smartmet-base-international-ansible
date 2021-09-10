@@ -1,0 +1,4 @@
+[DEFAULT]
+findtime  = 5000
+[sshd]
+enabled = true

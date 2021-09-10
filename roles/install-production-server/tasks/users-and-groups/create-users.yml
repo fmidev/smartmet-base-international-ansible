@@ -1,0 +1,29 @@
+---
+
+- name: Determine available users
+  getent:
+    database: passwd
+
+- name: Add user 'smartmet'
+  user:
+    name: smartmet
+    uid: 1000
+    groups: 
+    - smartmet 
+    - wheel
+    - docker
+  when:
+    - "'smartmet' not in ansible_facts.getent_passwd"
+    - "'1000' not in item.value[1]"
+  loop: "{{ ansible_facts.getent_passwd | dict2items }}"
+
+- name: Add user 'gts'
+  user:
+    name: gts
+    uid: 1001
+    groups: gts
+    home: /smartmet/data/gts
+  when:
+    - "'gts' not in ansible_facts.getent_passwd"
+    - "'1001' not in item.value[1]"
+  loop: "{{ ansible_facts.getent_passwd | dict2items }}"

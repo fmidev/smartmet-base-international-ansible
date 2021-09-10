@@ -1,0 +1,7 @@
+
+---
+- hosts: smartmet_server
+  gather_facts: true
+  serial: 1
+  roles:
+    - install-production-server

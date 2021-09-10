@@ -1,0 +1,34 @@
+---
+# main file
+
+# yum stuff
+- name: Generate yum configurations
+  include_tasks: yum/install-yum-conf.yml
+
+- name: Install required server packages
+  include_tasks: yum/install-packages.yml
+
+# users and groups
+- name: Add required groups
+  include_tasks: users-and-groups/create-groups.yml
+
+- name: Add required users
+  include_tasks: users-and-groups/create-users.yml
+
+# add directories
+- name: Create directory structure
+  include_tasks: files-and-scripts/create-directory-structure.yml
+
+# add required files, scripts and configurations
+- name: Add required files, scripts and configurations
+  include_tasks: files-and-scripts/required-files-and-scripts.yml
+
+# install required unixtools
+- name: Install required unixtools
+  include_tasks: unix-tools/unixtools.yml
+
+- name: Enable and start systmctl softwares 
+  include_tasks: systemctl/systemctl.yml
+
+- name: Run various firewall-cmd commands 
+  include_tasks: systemctl/firewallcmd.yml

@@ -1,0 +1,66 @@
+# /etc 
+- name: Add /etc/profile.d/smartmet.sh
+  copy:
+    src: "profile.d/smartmet.sh"
+    dest: /etc/profile.d/smartmet.sh
+
+- name: Add /etc/php.d/smartmet.ini
+  copy:
+    src: "php.d/smartmet.ini"
+    dest: /etc/php.d/smartmet.sh
+
+- name: Add /etc/cron.d/smartmet.cron
+  copy:
+    src: "cron.d/smartmet.cron"
+    dest: /etc/cron.d/smartmet.cron
+
+- name: Add /etc/httpd/conf.d/smartmet.conf
+  copy:
+    src: "httpd/smartmet.conf"
+    dest: /etc/httpd/conf.d/smartmet.conf
+
+- name: Add /etc/ppp/chap-secrets.fmi
+  copy:
+    src: "ppp/chap-secrets.fmi"
+    dest: /etc/ppp/chap-secrets.fmi
+
+- name: Add /etc/ppp/peers/FMI
+  copy:
+    src: "ppp/FMI"
+    dest: /etc/ppp/peers/FMI
+
+- name: Add /etc/fail2ban/jail.local
+  copy:
+    src: "fail2ban/jail.local"
+    dest: /etc/fail2ban/jail.local
+
+- name: Add /etc/fail2ban/action.d/firewallcmd-ipset.local
+  copy:
+    src: "fail2ban/firewallcmd-ipset.local"
+    dest: /etc/fail2ban/action.d/firewallcmd-ipset.local
+
+- name: Add /etc/samba/smb.conf
+  copy:
+    src: "samba/smb.conf"
+    dest: /etc/samba/smb.conf
+
+# /smartmet
+- name: Add /smartmet/cnf/httpd.conf
+  copy:
+    src: "httpd/httpd.conf"
+    dest:  /smartmet/cnf/httpd.conf
+
+- name: Add /smartmet/cnf/smartmet.conf
+  copy:
+    src: "cnf/smartmet.conf"
+    dest:  /smartmet/cnf/smartmet.conf
+
+- name: Add /smartmet/cnf/palcrypt.conf
+  copy:
+    src: "cnf/palcrypt.conf"
+    dest:  /smartmet/cnf/palcrypt.conf
+
+- name: Add /smartmet/cnf/misc/arrow.path
+  copy:
+    src: "cnf/arrow.path"
+    dest:  /smartmet/cnf/misc/arrow.path
