@@ -7,7 +7,7 @@ Based on https://github.com/fmidev/smartmet-base-international
 ## Running it:
 `ansible-playbook --inventory inventories/production/hosts.yml --user=root install-production-server.yml`
 
-Add host server(s) to `inventories{production/development}/host.yml`
+Add host server(s) to `inventories{production/development}/host.yml` or run with `--host=`
 
 Note: the `--list-hosts`-argument can be used to first check what command would do. Actual operation is fully run without it.
 
