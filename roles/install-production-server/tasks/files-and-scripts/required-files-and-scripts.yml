@@ -55,10 +55,10 @@
     src: "cnf/smartmet.conf"
     dest:  /smartmet/cnf/smartmet.conf
 
-- name: Add /smartmet/cnf/palcrypt.conf
+- name: Add /smartmet/cnf/palcrypt/palcrypt.conf
   copy:
     src: "cnf/palcrypt.conf"
-    dest:  /smartmet/cnf/palcrypt.conf
+    dest:  /smartmet/cnf/palcrypt/palcrypt.conf
 
 - name: Add /smartmet/cnf/misc/arrow.path
   copy:
