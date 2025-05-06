@@ -46,6 +46,7 @@
     - /smartmet/cnf/cron/cron.daily 
     - /smartmet/cnf/cron/cron.weekly
     - /smartmet/cnf/cron/cron.monthly
+    - /smartmet/cnf/palcrypt
     - /smartmet/cnf/triggers.d/quick
     - /smartmet/cnf/triggers.d/lazy
     - /smartmet/editor/in
